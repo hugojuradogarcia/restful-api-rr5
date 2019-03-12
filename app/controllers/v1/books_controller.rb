@@ -29,6 +29,12 @@ class V1::BooksController < ApplicationController
     end
   end
 
+  def destroy
+    book = Book.find(params[:id])
+    book.destroy
+    head 204
+  end
+
   private
 
   def book_params
