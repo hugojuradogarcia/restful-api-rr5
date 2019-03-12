@@ -14,6 +14,11 @@ class V1::BooksController < ApplicationController
     end
   end
 
+  def show
+    book = Book.find(params[:id])
+    render json: book, status: :ok
+  end
+
   private
 
   def book_params
