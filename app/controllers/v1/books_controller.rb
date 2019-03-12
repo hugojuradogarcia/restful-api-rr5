@@ -19,6 +19,16 @@ class V1::BooksController < ApplicationController
     render json: book, status: :ok
   end
 
+  def update
+    book = Book.find(params[:id])
+
+    if book.update(book_params)
+      render json: book, status: :ok
+    else
+      render json: { errors: book.errors },status: :unprocessable_entity
+    end
+  end
+
   private
 
   def book_params
