@@ -5,12 +5,17 @@ class UsersController < ApplicationController
   end
 
   def get_posts
-    user = User.find(params[:id])
-    render json: { books: user.posts }, status: :ok
+    user = User.find(params[:user_id])
+    render json: { posts: user.posts }, status: :ok
   end
 
-  def get_posts_name
-    user = User.find(params[:id])
-    render json: { books: user.posts.select(:body) }, status: :ok
+  def get_posts_body
+    user = User.find(params[:user_id])
+    render json: { posts: user.posts.select(:body) }, status: :ok
+  end
+
+  def get_address
+    @user = User.find(params[:user_id])
+    render json: { address: @user.address}, status: :ok
   end
 end
